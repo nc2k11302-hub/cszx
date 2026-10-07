@@ -69,7 +69,7 @@ function App() {
                 alt="Meta Logo"
                 className="taskbar-logo"
               />
-              <span className="taskbar-title">Help Center</span>
+              <span className="taskbar-title">Meta</span>
             </div>
 
             {/* <div className="taskbar-right">

@@ -16,6 +16,7 @@
   max-height: 100%;
   object-fit: contain;
 }
+
 .fixed-taskbar {
   position: fixed;
   font-family: Helvetica;
@@ -26,6 +27,7 @@
   padding: 20px 30px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   z-index: 9999;
+
   @media (max-width: 1000px) {
     padding: 14px 16px;
   }
@@ -72,6 +74,7 @@
   background-color: #f0f2f5;
   padding: 4px 10px;
   border-radius: 8px;
+
   @media (max-width: 1000px) {
     display: none;
   }
@@ -101,6 +104,10 @@
   cursor: pointer;
 }
 
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
 .container {
   padding-top: 40px;
   display: flex;
@@ -112,28 +119,30 @@
   }
 
   .left {
-    // width: 25%;
-    display: none !important;
-
     padding: 0 20px;
     height: auto;
-
     min-height: 100vh;
     display: flex;
-    box-shadow: 1px 0 4px rgba(0, 0, 0, 0.08); /* đổ bóng cạnh phải */
+    box-shadow: 1px 0 4px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, opacity 0.3s ease;
 
     @media (max-width: 1000px) {
       position: fixed;
-      top: 0;
+      top: 60px;
       left: 0;
       width: 80%;
-      height: 100vh;
+      height: calc(100vh - 60px);
       background: white;
-      z-index: 999;
+      z-index: 998;
+
       transform: translateX(-100%);
       opacity: 0;
       pointer-events: none;
+
+      padding: 40px 0 0 0 !important;
+
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     &.show {
@@ -154,6 +163,12 @@
 
       @media (max-width: 1200px) {
         width: 70%;
+      }
+
+      @media (max-width: 1000px) {
+        width: 100% !important;
+        padding: 20px 16px !important;
+        margin: 0 auto !important;
       }
 
       .x1kpxq89 {
@@ -257,17 +272,23 @@
     }
   }
 
+  /* =======================================================
+     RIGHT
+     ======================================================= */
+
   .right {
     padding: 20px 0px 0 0px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* căn giữa ngang */
-    justify-content: center; /* căn giữa dọc nếu muốn full height */
+    align-items: center;
+    justify-content: center;
     text-align: center;
     background-color: #f0f2f5;
+
     @media (max-width: 1000px) {
       width: 100%;
+      margin-left: 0 !important;
     }
 
     .right-content {
@@ -276,9 +297,11 @@
       @media (max-width: 1440px) {
         width: 70%;
       }
+
       @media (max-width: 1200px) {
         width: 80%;
       }
+
       @media (max-width: 1000px) {
         width: 100%;
       }
@@ -385,6 +408,7 @@
         margin-top: 15px;
         margin-bottom: 15px;
         padding: 20px;
+
         img {
           border-top-left-radius: 15px;
           border-top-right-radius: 15px;
@@ -516,7 +540,10 @@
   }
 }
 
-/* ========= MOBILE LOGO ========= */
+/* =========================================================
+   MOBILE LOGO
+   ========================================================= */
+
 .mobile-logo-wrapper {
   display: none;
 }
@@ -539,7 +566,28 @@
   }
 }
 
-/* ========= HAMBURGER MENU ========= */
+/* =========================================================
+   MOBILE FORM - FIX AUTO ZOOM
+   ========================================================= */
+
+@media (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    font-size: 16px !important;
+  }
+}
+
+/* =========================================================
+   HAMBURGER MENU
+   ========================================================= */
+
 .hamburger-icon {
   display: none;
 }
@@ -561,16 +609,21 @@
     }
   }
 }
+
+/* =========================================================
+   MOBILE LEFT
+   ========================================================= */
+
 @media (max-width: 1000px) {
   .left {
-    width: 80% !important; // ✅ Chiếm full màn hình mobile
-    padding: 40px 0 0 0 !important; // ✅ Không padding làm dư trắng
+    width: 80% !important;
+    padding: 40px 0 0 0 !important;
   }
 
   .left .left-content {
-    width: 100% !important; // ✅ Fill toàn bộ chiều ngang .left
-    padding: 20px 16px !important; // ✅ Giữ một chút khoảng cách trái/phải, hoặc để 0
-    margin: 0 auto !important; // ✅ Căn giữa nếu cần
+    width: 100% !important;
+    padding: 20px 16px !important;
+    margin: 0 auto !important;
   }
 }
 
@@ -610,8 +663,12 @@
     }
   }
 }
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
 .meta-footer {
-  // margin-top: 20px;
   background-color: #f0f2f5;
   width: 100%;
   padding: 30px 60px;
@@ -681,15 +738,19 @@
     }
   }
 }
-/* OUTSIDE media query */
+
+/* =========================================================
+   LEFT SIDEBAR DESKTOP
+   ========================================================= */
+
 .left {
   position: fixed;
   top: 60px;
   left: 0;
   width: 25%;
-  height: calc(100vh - 60px); // ⚠️ RẤT QUAN TRỌNG
+  height: calc(100vh - 60px);
   background: white;
-  overflow-y: auto; // ✅ Cho phép cuộn khi nội dung dài
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   box-shadow: 1px 0 4px rgba(0, 0, 0, 0.08);
@@ -699,5 +760,29 @@
 @media (max-width: 1000px) {
   .right {
     margin-left: 0 !important;
+  }
+}
+
+/* =========================================================
+   FINAL MOBILE ZOOM PROTECTION
+   ========================================================= */
+
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+    line-height: 1.4;
+  }
+
+  button {
+    -webkit-tap-highlight-color: transparent;
   }
 }
